@@ -1,191 +1,384 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Intel: Sustainability Through the Ages</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <title>Intel Sustainability Timeline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A professional, responsive Intel-themed sustainability timeline with 3D flip cards, refined motion, and animated hero logo." />
+
+  <!-- Bootstrap 5 RTL + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Language bar -->
+  <nav class="lang-bar" aria-label="Language selector">
+    <div class="container d-flex align-items-center gap-3">
+      <label class="form-label m-0" for="langSelect" data-i18n="lang.choose">Choose language</label>
+      <select id="langSelect" class="form-select form-select-sm w-auto" aria-label="Choose language"></select>
+      <span class="text-muted small" data-i18n="lang.note">Interface text updates instantly when you switch languages.</span>
+    </div>
+  </nav>
 
-  <!-- Header / Hero Section -->
-  <header>
-    <div>
-      <img src="img/intel-header-logo.svg" alt="Intel Logo" />
-      <!-- Main Heading -->
-      <h1>
-        Sustainability Through the Ages
-      </h1>
+  <!-- HERO -->
+  <header class="hero" role="banner">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-inner container">
+      <div class="logo" aria-label="Intel logo">
+        <svg class="logo-outline" viewBox="0 0 320 96" width="160" height="48" aria-hidden="true">
+          <defs>
+            <linearGradient id="logoStroke" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#0071C5"/>
+              <stop offset="1" stop-color="#0058A6"/>
+            </linearGradient>
+          </defs>
+          <rect x="4" y="4" width="312" height="88" rx="44" ry="44" class="outline" stroke="url(#logoStroke)" />
+        </svg>
+        <span class="logo-word" aria-hidden="true">
+          <span class="l" style="--i:0">i</span>
+          <span class="l" style="--i:1">n</span>
+          <span class="l" style="--i:2">t</span>
+          <span class="l" style="--i:3">e</span>
+          <span class="l" style="--i:4">l</span>
+        </span>
+      </div>
 
-      <!-- Subheading / Description -->
-      <p>
-        Explore Intel's journey through time, discovering how our commitment
-        to innovation has shaped a more sustainable future for technology 
-        and our planet.
-      </p>
+      <h1 class="headline" data-i18n="hero.title">Sustainability Timeline</h1>
+      <p class="subhead" data-i18n="hero.subtitle">A responsive, interactive look at milestones in Intel’s sustainability journey.</p>
+      <a class="cta" href="#timeline" data-i18n="hero.cta">Explore</a>
     </div>
   </header>
 
-  <!-- Timeline Cards Section -->
-  <section>
-    <!-- Card 1: 1968 -->
-    <div>
-      <h2>1968</h2>
-      <h3>Intel Founded</h3>
-      <img src="img/1.jpg" alt="Placeholder Image" />
-      <p>
-        Robert Noyce and Gordon Moore rename the newly formed company 
-        NM Electronics to Intel Corporation, laying the foundation for 
-        decades of technological innovation.
-      </p>
-    </div>
+  <main id="main">
+    <!-- FILTER TABS -->
+    <section class="container tabs-wrap" aria-label="Filter timeline by category">
+      <nav class="tabs" role="tablist" aria-label="Timeline filters">
+        <span class="tab-indicator" aria-hidden="true"></span>
+        <button class="tab is-active" role="tab" aria-selected="true" data-filter="all">All</button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="energy">Energy</button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="water">Water</button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="waste">Waste</button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="climate">Climate</button>
+        <button class="tab" role="tab" aria-selected="false" data-filter="vision">Vision</button>
+      </nav>
+      <div class="filter-status" aria-live="polite">Showing: All</div>
+      <div id="jump-live" class="visually-hidden" aria-live="polite"></div>
+    </section>
 
-    <!-- Card 2: 1971 -->
-    <div>
-      <h2>1971</h2>
-      <h3>First Microprocessor</h3>
-      <img src="img/2.jpg" alt="Placeholder Image" />
-      <p>
-        Intel debuts the 4004, the world's first commercial microprocessor, 
-        igniting the microprocessor revolution and propelling the future 
-        of computing devices.
-      </p>
-    </div>
+    <!-- TIMELINE -->
+    <section id="timeline" class="timeline-section container" aria-labelledby="tl-head">
+      <header class="section-head">
+        <h2 id="tl-head" tabindex="-1" data-i18n="timeline.title">Milestones</h2>
+        <p class="section-desc" data-i18n="timeline.desc">Horizontal scroll with snap on desktop. Vertical stack on mobile. Flip a card to read more.</p>
+      </header>
 
-    <!-- Card 3: 1978 -->
-    <div>
-      <h2>1978</h2>
-      <h3>8086 Processor</h3>
-      <img src="img/3.jpg" alt="Placeholder Image" />
-      <p>
-        Launch of the 8086 processor, establishing the x86 architecture 
-        that drives countless PCs and servers in the modern era.
-      </p>
-    </div>
+      <div class="timeline-axis" aria-hidden="true"></div>
 
-    <!-- Card 4: 1985 -->
-    <div>
-      <h2>1985</h2>
-      <h3>386 Processor</h3>
-      <img src="img/4.jpg" alt="Placeholder Image" />
-      <p>
-        Intel introduces the 386 processor with 32-bit architecture, 
-        ushering in a new era of performance and multitasking for 
-        personal computers.
-      </p>
-    </div>
+      <div class="timeline" role="list">
+        <!-- CARD 1 -->
+        <article class="card" role="listitem" data-category="energy">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <figure class="media">
+                <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1400&auto=format&fit=crop" alt="Wind turbines at sunset representing renewable electricity" loading="lazy" />
+              </figure>
+              <div class="content">
+                <p class="eyebrow">2019–2021</p>
+                <h3 data-i18n="card1.title">Renewable Electricity Expansion</h3>
+                <p class="summary" data-i18n="card1.summary">Scaling clean electricity and efficiency across global sites.</p>
+                <div class="chips"><span class="chip">Energy</span></div>
+                <button class="flip-btn" aria-expanded="false" aria-controls="d1" data-i18n="buttons.readmore">Read more</button>
+              </div>
+            </div>
+            <div class="card-face card-back" id="d1">
+              <div class="back-content">
+                <h4 data-i18n="card.back.heading">What changed</h4>
+                <!-- now translated via i18n -->
+                <ul data-i18n-html="card1.details">
+                  <li>Set a goal of <strong>100% renewable electricity globally by 2030</strong> and began accelerating purchases to get there.</li>
+                  <li>Expanded facility energy conservation projects toward a <strong>4 billion kWh cumulative savings by 2030</strong>.</li>
+                  <li>Reported <strong>37.9 billion kWh</strong> of renewable electricity supply and purchases across five years.</li>
+                  <li>Advanced green-building practices by targeting <strong>LEED® certification for new factories and facilities</strong>.</li>
+                  <li>Built playbooks with sites and utilities to increase access to renewable power contracts.</li>
+                </ul>
+                <button class="flip-close" aria-label="Go back" data-i18n="buttons.back">Back</button>
+              </div>
+            </div>
+          </div>
+        </article>
 
-    <!-- Card 5: 2006 -->
-    <div>
-      <h2>2006</h2>
-      <h3>Peak GHG Emissions</h3>
-      <img src="https://placehold.co/250x100" alt="Placeholder Image" />
-      <p>
-        This year marks Intel's highest annual greenhouse gas emissions 
-        for operations. Over subsequent years, Intel invests heavily in 
-        chemical abatement, renewable energy, and energy-efficient 
-        manufacturing to reverse this trend.
-      </p>
-    </div>
+        <!-- CARD 2 -->
+        <article class="card" role="listitem" data-category="water">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <figure class="media">
+                <img src="https://images.unsplash.com/photo-1523978591478-c753949ff840?q=80&w=1400&auto=format&fit=crop" alt="Reservoir symbolizing corporate water stewardship" loading="lazy" />
+              </figure>
+              <div class="content">
+                <p class="eyebrow">2022</p>
+                <h3 data-i18n="card2.title">Water Stewardship</h3>
+                <p class="summary" data-i18n="card2.summary">Restoration projects and water reuse to support watershed health.</p>
+                <div class="chips"><span class="chip">Water</span></div>
+                <button class="flip-btn" aria-expanded="false" aria-controls="d2" data-i18n="buttons.readmore">Read more</button>
+              </div>
+            </div>
+            <div class="card-face card-back" id="d2">
+              <div class="back-content">
+                <h4 data-i18n="card.back.heading">What changed</h4>
+                <ul data-i18n-html="card2.details">
+                  <li>Committed to <strong>net positive water by 2030</strong> by conserving <strong>60 billion gallons</strong> and funding restoration.</li>
+                  <li>Funded <strong>40+ watershed restoration projects</strong> across multiple regions.</li>
+                  <li>By end of 2023, reported <strong>~13 billion gallons</strong> conserved and restored toward the goal.</li>
+                  <li>Scaled on-site <strong>reuse and conservation</strong> alongside external projects in water-stressed basins.</li>
+                  <li>Published annual water reports with project-level details and progress.</li>
+                </ul>
+                <button class="flip-close" aria-label="Go back" data-i18n="buttons.back">Back</button>
+              </div>
+            </div>
+          </div>
+        </article>
 
-    <!-- Card 6: 2020 -->
-    <div>
-      <h2>2020</h2>
-      <h3>RISE Strategy</h3>
-      <img src="https://placehold.co/250x100" alt="Placeholder Image" />
-      <p>
-        Intel launches its RISE (Responsible, Inclusive, Sustainable, 
-        Enabling) strategy and 2030 goals, aiming to drive industry-wide 
-        progress on climate action, water stewardship, and waste reduction.
-      </p>
-    </div>
+        <!-- CARD 3 -->
+        <article class="card" role="listitem" data-category="waste">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <figure class="media">
+                <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?q=80&w=1400&auto=format&fit=crop" alt="Recycling bins indicating zero-waste progress" loading="lazy" />
+              </figure>
+              <div class="content">
+                <p class="eyebrow">2023</p>
+                <h3 data-i18n="card3.title">Zero Waste Progress</h3>
+                <p class="summary" data-i18n="card3.summary">Circularity, supplier engagement, and responsible handling.</p>
+                <div class="chips"><span class="chip">Waste</span></div>
+                <button class="flip-btn" aria-expanded="false" aria-controls="d3" data-i18n="buttons.readmore">Read more</button>
+              </div>
+            </div>
+            <div class="card-face card-back" id="d3">
+              <div class="back-content">
+                <h4 data-i18n="card.back.heading">What changed</h4>
+                <ul data-i18n-html="card3.details">
+                  <li>Targeted <strong>zero waste to landfill by 2030</strong> and circular economy strategies for <strong>60% of manufacturing waste</strong>.</li>
+                  <li>Reported sending just <strong>~4% of waste to landfill by end of 2023</strong>.</li>
+                  <li>In 2024, applied circular practices (reuse, recovery, recycling) to <strong>~66% of manufacturing waste streams</strong>.</li>
+                  <li>Expanded supplier partnerships to design for reuse and reduce packaging impacts.</li>
+                  <li>Maintained high recycling rates for non-hazardous waste across sites.</li>
+                </ul>
+                <button class="flip-close" aria-label="Go back" data-i18n="buttons.back">Back</button>
+              </div>
+            </div>
+          </div>
+        </article>
 
-    <!-- Card 7: 2022 -->
-    <div>
-      <h2>2022</h2>
-      <h3>Net-Zero By 2040</h3>
-      <img src="https://placehold.co/250x100" alt="Placeholder Image" />
-      <p>
-        Intel announces its commitment to achieve net-zero greenhouse 
-        gas emissions (Scope 1 and 2) across its global operations 
-        by 2040, building on years of environmental initiatives.
-      </p>
-    </div>
+        <!-- CARD 4 -->
+        <article class="card" role="listitem" data-category="climate">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <figure class="media">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1400&auto=format&fit=crop" alt="Modern facility with clear sky representing climate roadmap" loading="lazy" />
+              </figure>
+              <div class="content">
+                <p class="eyebrow">2024</p>
+                <h3 data-i18n="card4.title">Climate Action Roadmap</h3>
+                <p class="summary" data-i18n="card4.summary">Operational emissions, supplier ties, and product efficiency.</p>
+                <div class="chips"><span class="chip">Climate</span></div>
+                <button class="flip-btn" aria-expanded="false" aria-controls="d4" data-i18n="buttons.readmore">Read more</button>
+              </div>
+            </div>
+            <div class="card-face card-back" id="d4">
+              <div class="back-content">
+                <h4 data-i18n="card.back.heading">What changed</h4>
+                <ul data-i18n-html="card4.details">
+                  <li><strong>Net-zero Scope 1 &amp; 2 by 2040</strong>, with a 2030 interim goal to <strong>cut absolute Scope 1 &amp; 2 by 10% vs. 2019</strong>.</li>
+                  <li><strong>99% renewable electricity</strong> achieved in 2023; continued progress in 2024.</li>
+                  <li>Roadmap includes <strong>novel abatement tech</strong> for F-GHGs/N<sub>2</sub>O, chemistry substitution, and tool optimization.</li>
+                  <li>New facilities targeted to <strong>USGBC LEED® standards</strong> to reduce operational impacts.</li>
+                  <li>Value-chain programs like <strong>Catalyze</strong> and the <strong>Semiconductor Climate Consortium</strong> to accelerate supplier renewables.</li>
+                </ul>
+                <button class="flip-close" aria-label="Go back" data-i18n="buttons.back">Back</button>
+              </div>
+            </div>
+          </div>
+        </article>
 
-    <!-- Card 8: 2023 -->
-    <div>
-      <h2>2023</h2>
-      <h3>Renewable Electricity</h3>
-      <img src="https://placehold.co/250x100" alt="Placeholder Image" />
-      <p>
-        The company achieves 99% renewable electricity usage worldwide, 
-        helping to drastically lower carbon emissions and driving progress 
-        toward Intel's long-term sustainability goals.
-      </p>
-    </div>
+        <!-- CARD 5 -->
+        <article class="card" role="listitem" data-category="energy">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <figure class="media">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop" alt="Solar panels pointing to 2030 goals" loading="lazy" />
+              </figure>
+              <div class="content">
+                <p class="eyebrow">2030</p>
+                <h3 data-i18n="card5.title">2030 Ambitions</h3>
+                <p class="summary" data-i18n="card5.summary">Energy efficiency, renewable coverage, responsible manufacturing.</p>
+                <div class="chips"><span class="chip">Energy</span></div>
+                <button class="flip-btn" aria-expanded="false" aria-controls="d5" data-i18n="buttons.readmore">Read more</button>
+              </div>
+            </div>
+            <div class="card-face card-back" id="d5">
+              <div class="back-content">
+                <h4 data-i18n="card.back.heading">What changes</h4>
+                <ul data-i18n-html="card5.details">
+                  <li><strong>100% renewable electricity globally</strong> and <strong>4B kWh cumulative energy savings</strong>.</li>
+                  <li><strong>Net positive water</strong>: conserve <strong>60B gallons</strong> and fund restoration projects.</li>
+                  <li><strong>Zero waste to landfill</strong> and circular strategies for <strong>60% of manufacturing waste</strong>.</li>
+                  <li><strong>Supply chain</strong>: reduce Scope 3 supply-chain emissions by <strong>30%</strong> from a 2021 baseline.</li>
+                  <li><strong>Products</strong>: improve microprocessor energy efficiency by <strong>10x</strong> and cut platform reference design footprint by <strong>30%+</strong>.</li>
+                </ul>
+                <button class="flip-close" aria-label="Go back" data-i18n="buttons.back">Back</button>
+              </div>
+            </div>
+          </div>
+        </article>
 
-    <!-- Card 9: 2024 -->
-    <div>
-      <h2>2024</h2>
-      <h3>Sustainability Summit</h3>
-      <img src="https://placehold.co/250x100" alt="Placeholder Image" />
-      <p>
-        Intel hosts its first Sustainability Summit, uniting suppliers, 
-        government officials, and industry leaders to collaborate on 
-        next-generation sustainable semiconductor manufacturing.
-      </p>
-    </div>
-  </section>
-
-  <!-- 3-Column Content Section -->
-  <section>
-    <div>
-      
-      <!-- Column 1 -->
-      <div>
-        <h2>RISE Strategy</h2>
-        <p>
-          Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy, 
-          Intel sets ambitious 2030 goals, including driving industry-wide 
-          progress on climate action, water stewardship, and waste reduction.
-        </p>
-        <!-- Learn More Button -->
-        <a href="#">Learn More</a>
+        <!-- CARD 6 -->
+        <article class="card" role="listitem" data-category="vision">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <figure class="media">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1400&auto=format&fit=crop" alt="Blue sky over mountains symbolizing long term net-zero vision" loading="lazy" />
+              </figure>
+              <div class="content">
+                <p class="eyebrow">2040+</p>
+                <h3 data-i18n="card6.title">Long-Term Net-Zero Vision</h3>
+                <p class="summary" data-i18n="card6.summary">Efficiency, clean energy, and resilient ecosystems.</p>
+                <div class="chips"><span class="chip">Vision</span></div>
+                <button class="flip-btn" aria-expanded="false" aria-controls="d6" data-i18n="buttons.readmore">Read more</button>
+              </div>
+            </div>
+            <div class="card-face card-back" id="d6">
+              <div class="back-content">
+                <h4 data-i18n="card.back.heading">What continues</h4>
+                <ul data-i18n-html="card6.details">
+                  <li><strong>Net-zero Scope 1 &amp; 2 by 2040</strong>; maintain <strong>100% renewable electricity</strong> across operations.</li>
+                  <li><strong>Net-zero upstream Scope 3 by 2050</strong> with sustained supplier engagement.</li>
+                  <li>Deploy <strong>novel abatement</strong> with higher destruction removal efficiency as technologies mature.</li>
+                  <li>Electrify on-site and leased vehicle fleets where feasible; transition to low-GWP heat transfer fluids.</li>
+                  <li>Continue building to <strong>LEED® standards</strong> and scaling energy conservation programs.</li>
+                  <li>Deepen collaboration via <strong>Catalyze</strong> and <strong>SCC</strong> to expand renewables across the value chain.</li>
+                </ul>
+                <button class="flip-close" aria-label="Go back" data-i18n="buttons.back">Back</button>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
 
-      <!-- Column 2 -->
-      <div>
-        <h2>Commitment</h2>
-        <p>
-          In 2022, Intel pledged to achieve net-zero greenhouse gas emissions 
-          (Scope 1 and 2) by 2040. This commitment builds on decades of 
-          environmental initiatives and partnerships across the semiconductor 
-          industry.
-        </p>
-        <!-- Learn More Button -->
-        <a href="#">Learn More</a>
+      <p class="scroll-hint" aria-hidden="true" data-i18n="timeline.hint">Scroll ⇢</p>
+    </section>
+
+    <!-- 3-column Bootstrap section (unchanged) -->
+    <section class="container my-5">
+      <div class="text-center mb-4">
+        <h2 class="mb-2" data-i18n="pillars.title">Global Impact In Focus</h2>
+        <p class="text-muted" data-i18n="pillars.desc">Three pillars that keep Intel’s sustainability leadership moving forward across every region.</p>
       </div>
 
-      <!-- Column 3 -->
-      <div>
-        <h2>Water &amp; Waste</h2>
-        <p>
-          Intel conserves billions of gallons of water annually and 
-          collaborates with local communities to restore watersheds.
-          Intel also upcycles and recycles materials to reduce waste and 
-          advance a circular economy.
-        </p>
-        <!-- Learn More Button -->
-        <a href="#">Learn More</a>
-      </div>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm b-card">
+            <div class="card-body">
+              <h3 class="card-title h5">
+                <i class="bi bi-droplet me-2" aria-hidden="true"></i>
+                <span data-i18n="pillars.ecosystems.title">Local ecosystems</span>
+              </h3>
+              <p class="card-text" data-i18n="pillars.ecosystems.desc">Intel partners with community experts to restore habitats, replenish water, and advance inclusive green jobs.</p>
+              <button class="btn btn-primary b-btn jump-to-timeline" data-filter="water" data-i18n="buttons.learn" aria-describedby="tl-head">Learn more</button>
+            </div>
+          </div>
+        </div>
 
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm b-card">
+            <div class="card-body">
+              <h3 class="card-title h5">
+                <i class="bi bi-cpu me-2" aria-hidden="true"></i>
+                <span data-i18n="pillars.efficiency.title">Efficient technology</span>
+              </h3>
+              <p class="card-text" data-i18n="pillars.efficiency.desc">Breakthrough architectures and cooling innovations lower emissions from fabs to data centers worldwide.</p>
+              <button class="btn btn-primary b-btn jump-to-timeline" data-filter="climate" data-i18n="buttons.learn" aria-describedby="tl-head">Learn more</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm b-card">
+            <div class="card-body">
+              <h3 class="card-title h5">
+                <i class="bi bi-people me-2" aria-hidden="true"></i>
+                <span data-i18n="pillars.partnerships.title">Responsible partnerships</span>
+              </h3>
+              <p class="card-text" data-i18n="pillars.partnerships.desc">Suppliers and customers use shared dashboards, training, and clean-power purchasing to reach climate goals faster.</p>
+              <button class="btn btn-primary b-btn jump-to-timeline" data-filter="vision" data-i18n="buttons.learn" aria-describedby="tl-head">Learn more</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-muted mt-3 small">Scroll ⇢</p>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter py-5" aria-labelledby="newsletter-head">
+      <div class="container">
+        <div class="row g-4 align-items-start">
+          <div class="col-12 col-lg-5">
+            <h2 id="newsletter-head" class="mb-2" data-i18n="nl.title">Join the Sustainability Newsletter</h2>
+            <p class="text-muted" data-i18n="nl.desc">Monthly intel on regenerative design, community projects, and the research behind our climate pledges.</p>
+          </div>
+          <div class="col-12 col-lg-7">
+            <form id="nl-form" novalidate>
+              <div class="mb-3">
+                <label for="nl-email" class="form-label" data-i18n="nl.email">Email</label>
+                <input id="nl-email" type="email" class="form-control" placeholder="name@example.com" required aria-describedby="nl-help" />
+                <div class="invalid-feedback" data-i18n="nl.invalid">Please enter a valid email.</div>
+              </div>
+
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="" id="nl-consent" required />
+                <label class="form-check-label" for="nl-consent">
+                  I agree to Intel’s privacy notice and understand I can unsubscribe anytime.
+                </label>
+                <div class="invalid-feedback">Consent is required.</div>
+              </div>
+
+              <button class="btn btn-primary btn-lg w-100 b-btn" type="submit" data-i18n="nl.submit">Subscribe securely</button>
+              <div id="nl-help" class="form-text" data-i18n="nl.help">We encrypt your submission and only use it for sustainability updates.</div>
+              <div id="nl-live" class="visually-hidden" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Thanks Modal -->
+    <div class="modal fade" id="thanksModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" data-i18n="modal.title">You're in</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" data-i18n="modal.body">Thanks for subscribing. Check your inbox to confirm.</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-i18n="modal.close">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Subscription Form -->
-  <section>
-    <h2>Subscribe to our Newsletter</h2>
-    <!-- Add form here -->
-  </section>
+  <footer class="footer">
+    <div class="container">
+      <small data-i18n="footer.note">Educational project inspired by Intel’s sustainability themes. Images: Unsplash.</small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
